@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mx-auto px-6 min-h-screen pt-32">
+    <div class="max-w-2xl mx-auto neo-brutalism p-8" data-aos="fade-up">
+        <h2 class="text-3xl font-bold glitch mb-8 text-center">Create Team</h2>
+        <form method="POST" action="/team/create" class="space-y-6">
+            <div>
+                <label for="team_name" class="block text-sm font-medium text-text">Team Name</label>
+                <input type="text" id="team_name" name="team_name" class="mt-1 block w-full p-2 border rounded-md" required>
+            </div>
+            <div>
+                <label for="team_description" class="block text-sm font-medium text-text">Team Description</label>
+                <textarea id="team_description" name="team_description" class="mt-1 block w-full p-2 border rounded-md" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="cyber-button w-full">Create Team</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

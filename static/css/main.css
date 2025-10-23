@@ -1,0 +1,276 @@
+
+:root {
+    --primary: #fe1fff;
+    --secondary: #00f0ff;
+    --accent: #ffeb3b;
+    --background: #030014;
+    --text: #ffffff;
+    --glow: 0 0 10px;
+}
+
+/* Critical render path styles */
+body {
+    font-family: 'JetBrains Mono', monospace;
+    background: var(--background);
+    color: var(--text);
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}
+
+#vanta-bg {
+    position: fixed;
+    z-index: 0;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    will-change: transform;
+}
+
+#content-wrapper {
+    position: relative;
+    z-index: 1;
+    contain: content;
+}
+
+h1, h2, h3, .display-font {
+    font-family: 'Syncopate', sans-serif;
+}
+
+/* Performance optimizations */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+:root {
+    --primary: #fe1fff;
+    --secondary: #00f0ff;
+    --accent: #ffeb3b;
+    --background: #030014;
+    --surface: #0a001f;
+    --text: #ffffff;
+    --glow: 0 0 10px;
+    --neon-blue: var(--secondary);
+    --neon-purple: var(--accent);
+    --neon-pink: #ff00c1;
+    --cyber-yellow: #FFE600;
+    --cyber-orange: #FF7F00;
+    --matrix-green: var(--primary);
+}
+
+/* Neon Text Effect */
+.neon-text {
+    color: var(--text);
+    text-shadow: 
+        0 0 5px var(--primary),
+        0 0 10px var(--primary),
+        0 0 20px var(--primary);
+    animation: neonPulse 2s infinite;
+}
+
+@keyframes neonPulse {
+    0%, 100% {
+        text-shadow: 
+            0 0 5px var(--primary),
+            0 0 10px var(--primary),
+            0 0 20px var(--primary);
+    }
+    50% {
+        text-shadow: 
+            0 0 10px var(--primary),
+            0 0 20px var(--primary),
+            0 0 30px var(--primary);
+    }
+}
+
+/* Neo Brutalist Box */
+.neo-brutalism {
+    position: relative;
+    border: 2px solid var(--primary);
+    background: rgba(254, 31, 255, 0.05);
+    box-shadow: 
+        0 0 0 2px rgba(254, 31, 255, 0.1),
+        inset 0 0 0 1px rgba(254, 31, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.neo-brutalism:hover {
+    box-shadow: 
+        0 0 0 2px rgba(254, 31, 255, 0.2),
+        inset 0 0 0 1px rgba(254, 31, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.neo-brutalism::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    z-index: -1;
+    background: linear-gradient(
+        90deg, 
+        transparent 0%,
+        var(--primary) 30%,
+        var(--primary) 70%,
+        transparent 100%
+    );
+    opacity: 0.1;
+    transition: opacity 0.3s ease;
+}
+
+/* Button Styles */
+.cyber-button {
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    padding: 10px 20px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.cyber-button:hover {
+    background: var(--primary);
+    color: var(--background);
+    box-shadow: 0 0 20px var(--primary);
+}
+
+.cyber-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    animation: shine 2s infinite;
+}
+
+@keyframes shine {
+    0% {
+        left: -100%;
+    }
+    20% {
+        left: 100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+/* Modern Animations */
+.glitch {
+    position: relative;
+    text-shadow: 0.05em 0 0 var(--primary), -0.025em -0.05em 0 var(--secondary),
+                0.025em 0.05em 0 var(--accent);
+    animation: glitch 725ms infinite;
+}
+
+@keyframes glitch {
+    0% {
+        text-shadow: 0.05em 0 0 var(--primary), -0.05em -0.025em 0 var(--secondary),
+                    -0.025em 0.05em 0 var(--accent);
+    }
+    14% {
+        text-shadow: 0.05em 0 0 var(--primary), -0.05em -0.025em 0 var(--secondary),
+                    -0.025em 0.05em 0 var(--accent);
+    }
+    15% {
+        text-shadow: -0.05em -0.025em 0 var(--primary), 0.025em 0.025em 0 var(--secondary),
+                    -0.05em -0.05em 0 var(--accent);
+    }
+    49% {
+        text-shadow: -0.05em -0.025em 0 var(--primary), 0.025em 0.025em 0 var(--secondary),
+                    -0.05em -0.05em 0 var(--accent);
+    }
+    50% {
+        text-shadow: 0.025em 0.05em 0 var(--primary), 0.05em 0 0 var(--secondary),
+                    0 -0.05em 0 var(--accent);
+    }
+    99% {
+        text-shadow: 0.025em 0.05em 0 var(--primary), 0.05em 0 0 var(--secondary),
+                    0 -0.05em 0 var(--accent);
+    }
+    100% {
+        text-shadow: -0.025em 0 0 var(--primary), -0.025em -0.025em 0 var(--secondary),
+                    -0.025em -0.05em 0 var(--accent);
+    }
+}
+
+.hover-glow {
+    transition: all 0.3s ease;
+}
+
+.hover-glow:hover {
+    text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary), 0 0 30px var(--primary);
+    transform: scale(1.05);
+}
+.neo-brutalism {
+    background: var(--surface);
+    border: 2px solid var(--primary);
+    box-shadow: 4px 4px 0 var(--primary);
+    transition: all 0.2s ease;
+}
+
+.neo-brutalism:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--primary);
+}
+
+.gradient-text {
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+}
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+.neon-box {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--primary);
+}
+
+.neon-box::before,
+.neon-box::after {
+    content: '';
+    position: absolute;
+    background: var(--primary);
+    z-index: -1;
+}
+
+.neon-box::before {
+    width: 100%;
+    height: 1px;
+    top: -2px;
+    left: 0;
+}
+
+.neon-box::after {
+    width: 1px;
+    height: 100%;
+    top: 0;
+    right: -2px;
+}
+
+@keyframes neon-pulse {
+    0%, 100% {
+        transform: scaleX(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scaleX(1.5);
+        opacity: 0.5;
+    }
+}
+@keyframes cyber-scan {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}

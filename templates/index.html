@@ -1,0 +1,285 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- HERO SECTION -->
+<div class="relative" data-scroll-container>
+    <section class="relative min-h-screen flex items-center pt-32">
+        <div class="container mx-auto px-6 border border-transparent rounded-lg" data-aos="fade-up">
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <div class="flex-1 text-center md:text-left" data-aos="fade-up">
+                    <div class="relative mb-8">
+                        <h1 class="text-6xl md:text-[8rem] font-bold glitch leading-tight text-text">
+                            <span class="typed-text">
+                                VibeCode 2025
+                            </span>
+                        </h1>
+                        <div class="absolute -top-8 right-0 text-sm text-primary font-mono opacity-60">
+                            system.init()
+                        </div>
+                    </div>
+                    <p class="text-xl md:text-3xl text-text mb-4 font-light tracking-wide" data-aos="fade-up" data-aos-delay="200">
+                        Organized by <span class="gradient-text font-bold">AWS Cloud Club @ LPU</span>
+                    </p>
+            <div class="space-y-8 mt-12" data-aos="fade-up" data-aos-delay="600">
+                <div class="flex flex-wrap justify-center md:justify-start gap-6">
+                    <a href="/auth/register" class="neo-brutalism px-12 py-4 text-lg font-bold uppercase tracking-wider hover-glow">
+                        Initialize >>
+                    </a>
+                    <a href="#timeline" class="neon-box px-12 py-4 text-lg font-bold uppercase tracking-wider hover-glow">
+                        Learn More >>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="flex-1" data-aos="fade-up">
+            <div class="neon-box p-8">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="neo-brutalism p-6 hover-glow">
+                        <div class="text-primary text-sm font-mono mb-2">system.time</div>
+                        <p class="text-xl font-bold">Oct 30</p>
+                        <p class="text-sm text-text/60 mt-1">08:00AM - 06:00PM</p>
+                    </div>
+                    <div class="neo-brutalism p-6 hover-glow">
+                        <div class="text-secondary text-sm font-mono mb-2">system.location</div>
+                        <p class="text-xl font-bold">Room 34-213</p>
+                        <p class="text-sm text-text/60 mt-1">LPU Campus</p>
+                    </div>
+                    <div class="neo-brutalism p-6 hover-glow">
+                        <div class="text-accent text-sm font-mono mb-2">team.size</div>
+                        <p class="text-xl font-bold">2-4 Members</p>
+                        <p class="text-sm text-text/60 mt-1">Students Only</p>
+                    </div>
+                    <div class="neo-brutalism p-6 hover-glow">
+                        <div class="text-primary text-sm font-mono mb-2">entry.fee</div>
+                        <p class="text-xl font-bold">Free</p>
+                        <!-- <p class="text-sm text-gray-400">Per Member</p> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PRIZES SECTION -->
+<section class="py-32 relative" id="prizes" data-scroll-section>
+    <div class="container mx-auto px-6">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-4xl md:text-6xl font-bold text-center glitch mb-16" data-aos="fade-up">Prize Matrix</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+
+                <!-- Winner -->
+                <div class="neo-brutalism p-8 text-center hover-glow" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-4xl mb-4 gradient-text">[1]</div>
+                    <h3 class="text-2xl font-bold text-primary mb-6">WINNER</h3>
+                    <div class="neon-box p-4">
+                        <ul class="space-y-3 text-text">
+                            <li class="font-mono">E-Certificate</li>
+                            <li class="font-mono">Event Stickers</li>
+                            <li class="font-mono">4 × “.xyz” Domains</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 1st Runner-Up -->
+                <div class="neo-brutalism p-8 text-center hover-glow" data-aos="fade-up" data-aos-delay="400">
+                    <div class="text-4xl mb-4 gradient-text">[2]</div>
+                    <h3 class="text-2xl font-bold text-secondary mb-6">1ST RUNNER-UP</h3>
+                    <div class="neon-box p-4">
+                        <ul class="space-y-3 text-text">
+                            <li class="font-mono">E-Certificate</li>
+                            <li class="font-mono">Event Stickers</li>
+                            <li class="font-mono">3 × “.xyz” Domains</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 2nd Runner-Up -->
+                <div class="neo-brutalism p-8 text-center hover-glow" data-aos="fade-up" data-aos-delay="600">
+                    <div class="text-4xl mb-4 gradient-text">[3]</div>
+                    <h3 class="text-2xl font-bold text-accent mb-6">2ND RUNNER-UP</h3>
+                    <div class="neon-box p-4">
+                        <ul class="space-y-3 text-text">
+                            <li class="font-mono">E-Certificate</li>
+                            <li class="font-mono">Event Stickers</li>
+                            <li class="font-mono">2 × “.xyz” Domains</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <p class="text-center mt-12 text-sm font-mono text-text/80">
+                🧩 Total of 9 “.xyz” domains distributed among top 3 winning teams
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- TIMELINE SECTION -->
+<section class="py-32 relative" id="timeline" data-scroll-section>
+    <div class="container mx-auto px-6">
+        <h2 class="text-4xl md:text-6xl font-bold text-center glitch mb-16" data-aos="fade-up">Execution Flow</h2>
+        <div class="max-w-4xl mx-auto">
+            <div class="space-y-6">
+
+                <!-- Ideation & Problem Selection -->
+                <div class="neo-brutalism p-6" data-aos="fade-up">
+                    <div class="flex flex-col md:flex-row items-start md:items-center gap-6">
+                        <div class="text-xl font-mono text-primary shrink-0">01</div>
+                        <div class="neon-box p-4 flex-grow">
+                            <h3 class="text-xl font-bold gradient-text mb-2">Ideation & Problem Selection</h3>
+                            <p class="text-sm font-mono text-text/60">08:00 AM - 09:00 AM</p>
+                            <p class="text-text mt-2">Teams select a problem statement and submit a short concept note outlining their approach.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Build Phase -->
+                <div class="neo-brutalism p-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex flex-col md:flex-row items-start md:items-center gap-6">
+                        <div class="text-xl font-mono text-secondary shrink-0">02</div>
+                        <div class="neon-box p-4 flex-grow">
+                            <h3 class="text-xl font-bold gradient-text mb-2">Build Phase</h3>
+                            <p class="text-sm font-mono text-text/60">09:00 AM - 04:00 PM</p>
+                            <p class="text-text mt-2">Teams collaboratively develop and implement their projects using the tech stack of their choice.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Presentation & Evaluation -->
+                <div class="neo-brutalism p-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="flex flex-col md:flex-row items-start md:items-center gap-6">
+                        <div class="text-xl font-mono text-accent shrink-0">03</div>
+                        <div class="neon-box p-4 flex-grow">
+                            <h3 class="text-xl font-bold gradient-text mb-2">Presentation & Evaluation</h3>
+                            <p class="text-sm font-mono text-text/60">04:00 PM - 06:00 PM</p>
+                            <p class="text-text mt-2">Top 30 teams present their prototypes to judges. Evaluation based on innovation, feasibility, and impact.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Result Declaration -->
+                <div class="neo-brutalism p-6" data-aos="fade-up" data-aos-delay="600">
+                    <div class="flex flex-col md:flex-row items-start md:items-center gap-6">
+                        <div class="text-xl font-mono text-primary shrink-0">04</div>
+                        <div class="neon-box p-4 flex-grow">
+                            <h3 class="text-xl font-bold gradient-text mb-2">Result & Closing</h3>
+                            <p class="text-sm font-mono text-text/60">06:00 PM</p>
+                            <p class="text-text mt-2">Judges announce winners, distribute certificates, and wrap up the hackathon.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURES SECTION -->
+<section class="py-32 relative" id="benefits" data-scroll-section>
+    <div class="container mx-auto px-6">
+        <h2 class="text-4xl md:text-6xl font-bold text-center glitch mb-16" data-aos="fade-up">Hackathon Benefits</h2>
+        <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            
+            <!-- Real-World Challenge -->
+            <div class="neo-brutalism p-8 hover-glow" data-aos="fade-up" data-aos-delay="200">
+                <div class="text-primary font-mono mb-4">[build]</div>
+                <h3 class="text-xl font-bold gradient-text mb-4">Real-World Challenges</h3>
+                <div class="neon-box p-4">
+                    <p class="text-text font-mono text-sm">
+                        Solve curated, industry-grade problem statements inspired by Smart India Hackathon and real tech use cases.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Networking & Mentorship -->
+            <div class="neo-brutalism p-8 hover-glow" data-aos="fade-up" data-aos-delay="400">
+                <div class="text-secondary font-mono mb-4">[connect]</div>
+                <h3 class="text-xl font-bold gradient-text mb-4">Network & Collaborate</h3>
+                <div class="neon-box p-4">
+                    <p class="text-text font-mono text-sm">
+                        Connect with mentors, judges, and fellow innovators — expand your professional and peer network.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Skill Growth -->
+            <div class="neo-brutalism p-8 hover-glow" data-aos="fade-up" data-aos-delay="600">
+                <div class="text-accent font-mono mb-4">[elevate]</div>
+                <h3 class="text-xl font-bold gradient-text mb-4">Grow Your Skills</h3>
+                <div class="neon-box p-4">
+                    <p class="text-text font-mono text-sm">
+                        Enhance your coding, teamwork, and presentation skills while gaining hands-on project experience.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CALL TO ACTION -->
+<section class="py-32 relative" data-scroll-section>
+    <div class="container mx-auto px-6">
+        <div class="neo-brutalism p-12 max-w-4xl mx-auto" data-aos="fade-up">
+            <div class="text-center">
+                <h2 class="text-4xl md:text-6xl font-bold glitch mb-8">Initialize System?</h2>
+                <p class="text-xl text-text/80 mb-12 font-mono">$ 24h_innovation.exe --start</p>
+                <div class="flex justify-center">
+                    <a href="/auth/register" class="neo-brutalism px-12 py-4 text-xl font-bold uppercase tracking-wider hover-glow inline-flex items-center">
+                        <span class="mr-2">
+                            Commence
+                        </span>
+                        <span class="font-mono text-primary">>></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    var typed = new Typed('.typed-text', {
+        strings: [
+            'System: VibeCode_2025',
+            'Status: Online',
+            'Mode: Innovation++',
+            'Time: 24h_Countdown'
+        ],
+        typeSpeed: 60,
+        backSpeed: 30,
+        loop: true,
+        backDelay: 1500,
+        startDelay: 500
+    });
+
+    let scroll;
+    window.addEventListener('load', function() {
+        scroll = new LocomotiveScroll({
+            el: document.querySelector('[data-scroll-container]'),
+            smooth: true,
+            lerp: 0.1,
+            multiplier: 0.5,
+            getDirection: true,
+            mobile: {
+                smooth: true,
+                breakpoint: 0
+            },
+            tablet: {
+                smooth: true,
+                breakpoint: 0
+            }
+        });
+
+        // Debounced resize handler
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                if (scroll) {
+                    scroll.update();
+                }
+            }, 250); // Wait 250ms after resize ends before updating
+        });
+    });
+</script>
+</main>
+{% endblock %}

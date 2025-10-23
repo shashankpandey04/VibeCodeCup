@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VibeCode Cup 2025</title>
+    <!-- Critical CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
+    
+    <!-- Preload fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Defer non-critical scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js" defer></script>
+    <link rel="stylesheet" href="/static/css/main.css">
+    <script src="https://sdk.cashfree.com/js/v3/cashfree.js"></script>
+</head>
+<body class="bg-gradient-to-br from-black via-gray-950 to-background min-h-screen text-text">
+    <nav class="fixed w-full top-0 z-50 bg-opacity-95 bg-background/80" x-data="{ open: false }">
+        <div class="container mx-auto px-6 py-6">
+            <div class="flex justify-between items-center">
+                <a href="/" class="text-2xl font-bold glitch">VibeCode Cup 2025</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="/" class="neo-brutalism px-6 py-2 hover-glow">Home</a>
+                    {% if current_user.is_authenticated %}
+                        <a href="/dashboard" class="neo-brutalism px-6 py-2 hover-glow">Dashboard</a>
+                        <a href="/auth/logout" class="neo-brutalism px-6 py-2 hover-glow">Logout</a>
+                    {% else %}
+                        <a href="/auth/login" class="neo-brutalism px-6 py-2 hover-glow">Login</a>
+                        <a href="/auth/register" class="neo-brutalism px-6 py-2 hover-glow">Register</a>
+                    {% endif %}
+                </div>
+                <button class="md:hidden neon-box p-2" @click="open = !open">
+                    <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="md:hidden" x-show="open" 
+                 x-transition:enter="transition ease-out duration-200"
+                 x-transition:enter-start="opacity-0 transform -translate-y-4"
+                 x-transition:enter-end="opacity-100 transform translate-y-0"
+                 x-transition:leave="transition ease-in duration-150"
+                 x-transition:leave-start="opacity-100 transform translate-y-0"
+                 x-transition:leave-end="opacity-0 transform -translate-y-4">
+                <div class="mt-4 flex flex-col space-y-4">
+                    {% if current_user.is_authenticated %}
+                    <a href="/auth/logout" class="neo-brutalism p-3 text-center hover-glow">Logout</a>
+                    <a href="/dashboard" class="neo-brutalism p-3 text-center hover-glow">Dashboard</a>
+                    {% else %}
+                    <a href="/auth/login" class="neo-brutalism p-3 text-center hover-glow">Login</a>
+                    <a href="/auth/register" class="neo-brutalism p-3 text-center hover-glow">Register</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+    <main class="animate-fade-in-up">
+        <body>
+    <div id="vanta-bg"></div>
+    <div id="content-wrapper">
+        {% block content %}{% endblock %}
+    </div>
+    </main>
+    <footer class="relative mt-16 py-12 text-text">
+        <div class="container mx-auto px-6">
+            <div class="neon-box p-8 text-center">
+                <p class="font-bold text-lg gradient-text">&copy; 2025 VibeCode Cup | AWS Cloud Club @ LPU</p>
+                <p class="mt-2 text-sm opacity-80 hover-glow">Designed for Developers, by Developers.</p>
+            </div>
+        </div>
+    </footer>
+    <style>
+        .animate-fade-in {
+            animation: fadeIn 1.2s cubic-bezier(0.4,0,0.2,1) both;
+        }
+        .animate-fade-in-up {
+            animation: fadeInUp 1.2s cubic-bezier(0.4,0,0.2,1) both;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+    <div id="vanta-bg" class="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none"></div>
+    <script>
+        // Initialize smooth scroll on base template
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize the background first
+            VANTA.NET({
+                el: "#vanta-bg",
+                mouseControls: true,
+                touchControls: true,
+                gyroControls: false,
+                minHeight: 200.00,
+                minWidth: 200.00,
+                scale: 1.00,
+                scaleMobile: 1.00,
+                color: 0xfe1fff,
+                backgroundColor: 0x030014,
+                points: 10.00,
+                maxDistance: 25.00,
+                spacing: 17.00
+            });
+        });
+
+        // Initialize Vanta.js background
+        VANTA.NET({
+            el: "#vanta-bg",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 0.75,
+            color: 0xfe1fff,
+            backgroundColor: 0x030014,
+            points: 8,
+            maxDistance: 20.00,
+            spacing: 20.00,
+            showDots: false,
+            fps: 30
+        });
+
+        // Handle background performance
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduceMotion) {
+            window.VANTA.NET.fps = 15;
+        }
+
+        // Cleanup on page unload
+        window.addEventListener('unload', () => {
+            if (window.VANTA) {
+                window.VANTA.NET.destroy();
+            }
+        });
+    </script>
+    <script>
+        const cashfree = Cashfree({
+            mode:"sandbox" //or production
+        });
+    </script>
+</body>
+</html>

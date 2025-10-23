@@ -1,0 +1,202 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mx-auto px-6 min-h-screen flex items-center justify-center pt-24">
+    <div class="w-full max-w-2xl neo-brutalism p-8" data-aos="fade-up">
+        <h2 class="text-3xl font-bold glitch mb-6 text-center">Join The Battle</h2>
+
+        <form method="post" action="/auth/register" class="space-y-6" id="registerForm">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Name -->
+                <div>
+                    <label for="name" class="block text-text mb-2 font-bold tracking-wide text-sm uppercase">Hacker Name</label>
+                    <input id="name" name="name" type="text" required autocomplete="name"
+                                 class="w-full px-4 py-3 bg-surface border-2 border-primary text-gray-900 placeholder-gray-400 rounded focus:outline-none focus:border-secondary transition-all duration-200">
+                </div>
+
+                <!-- Email -->
+                <div>
+                    <label for="email" class="block text-text mb-2 font-bold tracking-wide text-sm uppercase">Email</label>
+                    <input id="email" name="email" type="email" required autocomplete="username"
+                                 class="w-full px-4 py-3 bg-surface border-2 border-primary text-gray-900 placeholder-gray-400 rounded focus:outline-none focus:border-secondary transition-all duration-200">
+                </div>
+            </div>
+
+            <!-- Institution (fixed to LPU) -->
+            <div>
+                <label class="block text-text mb-2 font-bold tracking-wide text-sm uppercase">Institution</label>
+                <div class="flex gap-2">
+                    <div class="neo-brutalism px-4 py-2 w-full text-center">Lovely Professional University</div>
+                </div>
+            </div>
+
+            <!-- Registration / scanner -->
+            <div>
+                <label for="registration" class="block text-text mb-2 font-bold tracking-wide text-sm uppercase">
+                    <span id="regLabel">Registration Number</span>
+                </label>
+
+                <div id="lpuRegField" class="flex gap-2 items-start">
+                    <input id="registration" name="registration" type="text" required
+                                 placeholder="Scan ID Card to enter registration number"
+                                 class="flex-1 px-4 py-3 bg-surface border-2 border-primary text-gray-900 placeholder-gray-400 rounded focus:outline-none focus:border-secondary transition-all duration-200">
+                    <button type="button" id="scanButton" class="neo-brutalism px-4 py-3">Scan</button>
+                </div>
+
+                <div id="scanner" class="hidden mt-3">
+                    <video id="video" class="w-full rounded" autoplay></video>
+                    <canvas id="canvas" class="hidden"></canvas>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Year -->
+                <div>
+                    <label for="year" class="block text-text mb-2 font-bold tracking-wide text-sm uppercase">Year</label>
+                    <select id="year" name="year" required
+                                    class="w-full px-4 py-3 bg-surface border-2 border-primary text-gray-900 rounded focus:outline-none focus:border-secondary transition-all duration-200">
+                        <option value="">Select year</option>
+                        <option value="1">1st Year</option>
+                        <option value="2">2nd Year</option>
+                        <option value="3">3rd Year</option>
+                        <option value="4">4th Year</option>
+                    </select>
+                </div>
+
+                <!-- Phone -->
+                <div>
+                    <label for="phone" class="block text-text mb-2 font-bold tracking-wide text-sm uppercase">WhatsApp</label>
+                    <input id="phone" name="phone" type="tel" required placeholder="10-digit number"
+                                 class="w-full px-4 py-3 bg-surface border-2 border-primary text-gray-900 placeholder-gray-400 rounded focus:outline-none focus:border-secondary transition-all duration-200">
+                </div>
+            </div>
+
+            <!-- College (readonly default) -->
+            <div>
+                <label for="college" class="block text-text mb-2 font-bold tracking-wide text-sm uppercase">College</label>
+                <input id="college" name="college" type="text" required value="Lovely Professional University" readonly
+                             class="w-full px-4 py-3 bg-surface border-2 border-primary text-gray-900 rounded focus:outline-none focus:border-secondary transition-all duration-200 opacity-75">
+            </div>
+
+            <!-- Password with toggle -->
+            <div>
+                <label for="password" class="block text-text mb-2 font-bold tracking-wide text-sm uppercase">Access Code</label>
+                <div class="relative">
+                    <input id="password" name="password" type="password" required autocomplete="new-password"
+                                 class="w-full px-4 py-3 bg-surface border-2 border-primary text-gray-900 placeholder-gray-400 rounded focus:outline-none focus:border-secondary transition-all duration-200">
+                    <button type="button" id="pwToggle" class="absolute right-2 top-2 px-2 py-1 neo-brutalism">Show</button>
+                </div>
+            </div>
+
+            <button type="submit" id="submitBtn" class="w-full neo-brutalism hover-glow py-4 font-bold text-lg uppercase tracking-wider">
+                Initialize →
+            </button>
+
+            <div class="mt-4 text-center">
+                <p class="text-text/80">Already registered?</p>
+                <a href="/auth/login" class="inline-block mt-2 gradient-text hover-glow font-bold">Login Here</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Quagga for barcode scanning -->
+<script src="https://cdn.jsdelivr.net/npm/quagga@0.12.1/dist/quagga.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const lpuRegField = document.getElementById('lpuRegField');
+    const registrationInput = document.getElementById('registration');
+    const collegeInput = document.getElementById('college');
+    const regLabel = document.getElementById('regLabel');
+    const scanButton = document.getElementById('scanButton');
+    const scanner = document.getElementById('scanner');
+    let isScanning = false;
+
+    // Password toggle
+    const pwToggle = document.getElementById('pwToggle');
+    const passwordField = document.getElementById('password');
+    pwToggle.addEventListener('click', function () {
+        if (passwordField.type === 'password') {
+            passwordField.type = 'text';
+            pwToggle.textContent = 'Hide';
+        } else {
+            passwordField.type = 'password';
+            pwToggle.textContent = 'Show';
+        }
+    });
+
+    // Scanner
+    scanButton.addEventListener('click', function () {
+        if (!isScanning) startScanner();
+        else stopScanner();
+    });
+
+    function startScanner() {
+        if (!window.Quagga) {
+            alert('Scanner not available.');
+            return;
+        }
+        scanner.classList.remove('hidden');
+        scanButton.textContent = 'Stop';
+        isScanning = true;
+
+        Quagga.init({
+            inputStream: {
+                name: "Live",
+                type: "LiveStream",
+                target: scanner,
+                constraints: { facingMode: "environment" }
+            },
+            locator: { patchSize: "medium", halfSample: true },
+            decoder: { readers: ["code_128_reader","ean_reader","ean_8_reader","code_39_reader"] },
+            locate: true
+        }, function(err) {
+            if (err) {
+                console.error(err);
+                alert('Failed to start camera: ' + err);
+                stopScanner();
+                return;
+            }
+            Quagga.start();
+        });
+
+        Quagga.onDetected(function(result) {
+            if (result && result.codeResult && result.codeResult.code) {
+                registrationInput.value = result.codeResult.code;
+                stopScanner();
+            }
+        });
+    }
+
+    function stopScanner() {
+        scanner.classList.add('hidden');
+        scanButton.textContent = 'Scan';
+        isScanning = false;
+        try { Quagga.stop(); } catch(e) {}
+    }
+
+    // Phone input sanitization (digits only, max 10)
+    const phoneInput = document.getElementById('phone');
+    phoneInput.addEventListener('input', function () {
+        this.value = this.value.replace(/\D/g, '').slice(0, 10);
+    });
+
+    // Form submit: simple client-side checks
+    const form = document.getElementById('registerForm');
+    const submitBtn = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', function (e) {
+        // basic phone length check to avoid immediate server error
+        if (phoneInput.value.length !== 10) {
+            e.preventDefault();
+            alert('Invalid phone number. It should be 10 digits.');
+            phoneInput.focus();
+            return false;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Initializing...';
+        return true;
+    });
+});
+</script>
+{% endblock %}

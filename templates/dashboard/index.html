@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mx-auto px-6 min-h-screen pt-32">
+    <div class="max-w-4xl mx-auto">
+        <div class="neo-brutalism p-12 mb-8" data-aos="fade-up">
+            <h4 class="text-4xl font-bold glitch mb-8 text-center">Welcome, <span class="gradient-text">
+                {{ current_user.fullname }}
+            </span></h4>
+            
+            <!-- Team Status Section -->
+            <div class="neo-brutalism p-8 hover-glow mb-8">
+                <h3 class="text-2xl font-bold mb-6 text-center">Team Status</h3>
+                <p class="text-text/80 text-center">Team Name: <span class="gradient-text">
+                    {% if team %}
+                        {{ team.name }}
+                    {% else %}
+                        Not Applicable
+                    {% endif %}
+                </span></p>
+                <p class="text-text/80 text-center mt-4">Members: <span class="text-secondary">
+                    {% if team %}
+                        {{ team.members|length }}/4
+                    {% else %}
+                        Not Applicable
+                    {% endif %}
+                </span></p>
+                <p class="text-text/80 text-center mt-4">Role: <span class="text-secondary">
+                    {% if team %}
+                        {% if current_user.email == team.leader_email %}
+                            Team Leader
+                        {% else %}
+                            Member
+                        {% endif %}
+                    {% else %}
+                        Not Applicable
+                    {% endif %}
+                </span></p>
+                <div class="text-center mt-6">
+                    {% if team %}
+                        <a href="/team/{{ team.team_code }}" class="neo-brutalism px-6 py-2 hover-glow">View Team</a>
+                    {% else %}
+                        <a href="/team/create" class="neo-brutalism px-6 py-2 hover-glow">Join or Create Team</a>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- QR Code Section -->
+            <div class="neo-brutalism p-8 hover-glow">
+                <h3 class="text-2xl font-bold mb-6 text-center">Your QR Code</h3>
+                <div class="w-48 h-48 bg-gray-200 flex items-center justify-center rounded-md mx-auto">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data={{current_user.registration | urlencode}}%2C{{current_user.fullname | urlencode}}"  alt="QR Code" style="width: 150px; height: 150px;">
+                </div>
+                <p class="text-text/80 mt-4 text-center">
+                    This is your unique QR code for event check-in/check-out and event participation.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
