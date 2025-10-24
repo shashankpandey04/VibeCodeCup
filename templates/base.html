@@ -18,7 +18,21 @@
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js" defer></script>
     <link rel="stylesheet" href="/static/css/main.css">
-    <script src="https://sdk.cashfree.com/js/v3/cashfree.js"></script>
+    <!-- <script src="https://sdk.cashfree.com/js/v3/cashfree.js"></script> -->
+    <link rel="icon" type="image/png" href="/static/image/vibecodecup.png">
+
+    <!-- SEO -->
+    <meta name="description" content="VibeCode Cup 2025 - The Ultimate Coding Competition by AWS Cloud Club @ LPU. Join us for an exhilarating coding experience with exciting prizes and opportunities.">
+    <meta name="keywords" content="VibeCode Cup, Coding Competition, AWS Cloud Club, LPU, Programming Contest, Hackathon, Code Challenges">
+    <meta name="author" content="AWS Cloud Club @ LPU">
+    <meta property="og:title" content="VibeCode Cup 2025">
+    <meta property="og:description" content="Join VibeCode Cup 2025 - The Ultimate Coding Competition by AWS Cloud Club @ LPU.">
+    <meta property="og:image" content="/static/image/vibecodecup.png">
+    <meta property="og:url" content="https://vibecodecup.awslpu.in">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="VibeCode Cup 2025">
+    <meta name="twitter:description" content="Join VibeCode Cup 2025 - The Ultimate Coding Competition by AWS Cloud Club @ LPU.">
+    <meta name="twitter:image" content="/static/image/vibecodecup.png">
 </head>
 <body class="bg-gradient-to-br from-black via-gray-950 to-background min-h-screen text-text">
     <nav class="fixed w-full top-0 z-50 bg-opacity-95 bg-background/80" x-data="{ open: false }">
@@ -62,10 +76,11 @@
     </nav>
     <main class="animate-fade-in-up">
         <body>
-    <div id="vanta-bg"></div>
-    <div id="content-wrapper">
-        {% block content %}{% endblock %}
-    </div>
+        <div id="vanta-bg"></div>
+            <div id="content-wrapper">
+                {% block content %}{% endblock %}
+            </div>
+        </body>
     </main>
     <footer class="relative mt-16 py-12 text-text">
         <div class="container mx-auto px-6">
@@ -76,6 +91,22 @@
         </div>
     </footer>
     <style>
+        /* Change the scrollbar color and style and smooth scrolling */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #6b46c1;
+            border-radius: 6px;
+            border: 3px solid #1a1a1a;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+
         .animate-fade-in {
             animation: fadeIn 1.2s cubic-bezier(0.4,0,0.2,1) both;
         }
@@ -93,9 +124,7 @@
     </style>
     <div id="vanta-bg" class="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none"></div>
     <script>
-        // Initialize smooth scroll on base template
         document.addEventListener('DOMContentLoaded', () => {
-            // Initialize the background first
             VANTA.NET({
                 el: "#vanta-bg",
                 mouseControls: true,
@@ -113,7 +142,6 @@
             });
         });
 
-        // Initialize Vanta.js background
         VANTA.NET({
             el: "#vanta-bg",
             mouseControls: true,
@@ -132,23 +160,21 @@
             fps: 30
         });
 
-        // Handle background performance
         const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         if (reduceMotion) {
             window.VANTA.NET.fps = 15;
         }
 
-        // Cleanup on page unload
         window.addEventListener('unload', () => {
             if (window.VANTA) {
                 window.VANTA.NET.destroy();
             }
         });
     </script>
-    <script>
+    <!-- <script>
         const cashfree = Cashfree({
             mode:"sandbox" //or production
         });
-    </script>
+    </script> -->
 </body>
 </html>
